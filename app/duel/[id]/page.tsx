@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import matchesData from '@/context/data/matches_db.json'
+import DuelArena from '@/components/DuelArena'
 
 type DuelPageProps = {
   params: Promise<{ id: string }>
@@ -16,21 +17,22 @@ export default async function DuelPage({ params }: DuelPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-2xl mx-auto">
+    <main className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="max-w-4xl mx-auto">
         <Link href="/" className="text-blue-600 hover:text-blue-800 mb-6 inline-block">
           ← Volver a competiciones
         </Link>
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">{competition.name}</h1>
-        <p className="text-gray-600 mb-8">Jornada {competition.jornada}</p>
-
-        <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
-          <p className="text-gray-500">Próximamente: Sistema de duelos para elegir el MVP</p>
-          <p className="text-sm text-gray-400 mt-2">
-            {competition.players.length} jugadores participantes
-          </p>
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{competition.name}</h1>
+          <p className="text-gray-600">Jornada {competition.jornada} - Elige tu MVP</p>
         </div>
+
+        <DuelArena
+          players={competition.players}
+          competitionName={competition.name}
+          jornada={competition.jornada}
+        />
       </div>
     </main>
   )
