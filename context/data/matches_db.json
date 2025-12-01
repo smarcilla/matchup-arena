@@ -2,6 +2,7 @@
   "competitions": [
     {
       "name": "Champions League",
+      "icon": "/competitions/champions-league.png",
       "jornada": 5,
       "players": [
         { "name": "Kolo Muani", "image": "/players/Kolo_Muani.webp", "ranking": 9.8 },
@@ -16,6 +17,7 @@
     },
     {
       "name": "Premier League",
+      "icon": "/competitions/Premier-League.png",
       "jornada": 13,
       "players": [
         { "name": "M. Thiaw", "image": "/players/M_Thiaw.jpg", "ranking": 9.4 },
