@@ -1,0 +1,32 @@
+{
+  "competitions": [
+    {
+      "name": "Champions League",
+      "jornada": 5,
+      "players": [
+        { "name": "Kolo Muani", "image": "/players/Kolo_Muani.webp", "ranking": 9.8 },
+        { "name": "Adeyemi", "image": "/players/Adeyemi.webp", "ranking": 9.1 },
+        { "name": "De Ketelaere", "image": "/players/De_Ketelaere.avif", "ranking": 9.1 },
+        { "name": "Vitinha", "image": "/players/Vitinha.png", "ranking": 9.9 },
+        { "name": "Mbappé", "image": "/players/Mbappé.jpg", "ranking": 10.0 },
+        { "name": "Schlotterbeck", "image": "/players/Schlotterbeck.jpg", "ranking": 9.0 },
+        { "name": "Drioüech", "image": "/players/Driouech.jpg", "ranking": 9.1 },
+        { "name": "Flekken", "image": "/players/Flekken.png", "ranking": 10.0 }
+      ]
+    },
+    {
+      "name": "Premier League",
+      "jornada": 13,
+      "players": [
+        { "name": "M. Thiaw", "image": "/players/M_Thiaw.jpg", "ranking": 9.4 },
+        { "name": "P. Foden", "image": "/players/P_Foden.webp", "ranking": 9.0 },
+        { "name": "Y. Tielemans", "image": "/players/Y_Tielemans.avif", "ranking": 8.4 },
+        { "name": "R. Roefs", "image": "/players/R_Roefs.jpg", "ranking": 8.5 },
+        { "name": "D. Ouattara", "image": "/players/D_Ouattara.jpg", "ranking": 8.6 },
+        { "name": "L. Miley", "image": "/players/L_Miley.jpg", "ranking": 8.6 },
+        { "name": "M. De Cuyper", "image": "/players/M_De_Cuyper.jpg", "ranking": 8.2 },
+        { "name": "I. Thiago", "image": "/players/I_Thiago.webp", "ranking": 8.3 }
+      ]
+    }
+  ]
+}
