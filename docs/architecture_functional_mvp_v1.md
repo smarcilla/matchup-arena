@@ -9,9 +9,9 @@ complejidad innecesaria.
 
 ## 2. Pantallas
 
--   **Inicio**: Carga los jugadores y explica el funcionamiento.
--   **Duelo**: Presenta 1 vs 1 y permite votar.
--   **Resultados**: Muestra orden final según victorias/derrotas.
+- **Inicio**: Carga los jugadores y explica el funcionamiento.
+- **Duelo**: Presenta 1 vs 1 y permite votar.
+- **Resultados**: Muestra orden final según victorias/derrotas.
 
 ## 3. Estado global
 
@@ -31,22 +31,21 @@ Variables clave: - `queue` - `current` - `next` - `eliminated`
 
 ## 5. Diagrama (Mermaid)
 
-``` mermaid
+```mermaid
 flowchart LR
   INICIO --> CARGA --> DUELO --> RESULTADOS
 ```
 
 ## 6. Razonamiento arquitectónico
 
--   Se elige **Arquitectura A** porque el dominio aún es muy pequeño.
--   Si crece el número de pantallas, modos o estadísticas → migrar a
-    modular.
--   Next.js proporciona estructura mínima sin sobrecarga.
+- Se elige **Arquitectura A** porque el dominio aún es muy pequeño.
+- Si crece el número de pantallas, modos o estadísticas → migrar a
+  modular.
+- Next.js proporciona estructura mínima sin sobrecarga.
 
 ## 7. Beneficios
 
--   Implementación rápida.
--   Fácil de refactorizar.
--   Legible incluso para equipos pequeños o MVP.
-
+- Implementación rápida.
+- Fácil de refactorizar.
+- Legible incluso para equipos pequeños o MVP.
 ````

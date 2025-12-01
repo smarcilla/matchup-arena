@@ -28,7 +28,7 @@ Flujo principal: playersQueue → current → next → eliminated.
 
 ## 4. Estado (Zustand)
 
-``` ts
+```ts
 const usePlayersStore = create((set) => ({
   queue: [],
   current: null,
@@ -49,7 +49,7 @@ const usePlayersStore = create((set) => ({
 
 ## 6. Diagrama (Mermaid)
 
-``` mermaid
+```mermaid
 flowchart TD
   A[Inicio] --> B[Duelo]
   B -->|Votar| C{Quedan jugadores?}
@@ -59,8 +59,7 @@ flowchart TD
 
 ## 7. Decisiones técnicas
 
--   Usar Zustand por simplicidad y rendimiento.
--   Arquitectura A (simple) con posible migración futura a B (modular).
--   Next.js como único runtime.
-
+- Usar Zustand por simplicidad y rendimiento.
+- Arquitectura A (simple) con posible migración futura a B (modular).
+- Next.js como único runtime.
 ````
