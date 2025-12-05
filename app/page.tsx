@@ -1,8 +1,8 @@
 import CompetitionCard from '@/components/CompetitionCard'
-import matchesData from '@/context/data/matches_db.json'
+import { getCompetitionsForHome } from '@/lib/queries'
 
-export default function Home() {
-  const { competitions } = matchesData
+export default async function Home() {
+  const competitions = await getCompetitionsForHome()
 
   return (
     <main className="min-h-screen bg-gray-50 py-12 px-4">
@@ -13,17 +13,22 @@ export default function Home() {
         </p>
 
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Competiciones disponibles</h2>
-        <div className="flex flex-col gap-4">
-          {competitions.map((competition, index) => (
-            <CompetitionCard
-              key={index}
-              id={index}
-              name={competition.name}
-              icon={competition.icon}
-              jornada={competition.jornada}
-            />
-          ))}
-        </div>
+        {competitions.length === 0 ? (
+          <p className="text-center text-gray-500 py-8">
+            No hay competiciones con jornadas publicadas disponibles.
+          </p>
+        ) : (
+          <div className="flex flex-col gap-4">
+            {competitions.map((competition) => (
+              <CompetitionCard
+                key={competition.id}
+                slug={competition.slug}
+                name={competition.name}
+                jornada={competition.latestMatchday?.number ?? 0}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </main>
   )
