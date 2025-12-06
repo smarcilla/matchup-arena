@@ -1,8 +1,36 @@
 @import 'tailwindcss';
 
+/* Arena Nocturna Theme - Sistema de Colores */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Fondos */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.1);
+
+  /* Acentos */
+  --accent-cyan: #00f5ff;
+  --accent-magenta: #ff00ff;
+  --accent-gold: #ffd700;
+  --accent-orange: #ff6b35;
+
+  /* Texto */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.4);
+
+  /* Estados */
+  --winner-glow: #22c55e;
+  --loser-fade: #ef4444;
+
+  /* Gradientes */
+  --gradient-card: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+  --gradient-vs: linear-gradient(180deg, #ff4500, #ff0000, #ff4500);
+  --gradient-bg: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+
+  /* Legacy support */
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
 }
 
 @theme inline {
@@ -12,32 +40,191 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: var(--gradient-bg);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* ================================
+   ANIMACIONES - Arena Nocturna
+   ================================ */
+
+/* Pulso de brillo para bordes */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 5px var(--accent-cyan),
+      0 0 10px var(--accent-cyan),
+      0 0 20px rgba(0, 245, 255, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 10px var(--accent-cyan),
+      0 0 20px var(--accent-cyan),
+      0 0 40px rgba(0, 245, 255, 0.5);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Barrido de brillo en cards */
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(25deg);
+  }
 }
 
-/* Duel Animations */
+/* Flotación sutil para elementos */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Partículas subiendo */
+@keyframes particle-rise {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0);
+  }
+}
+
+/* Explosión de victoria */
+@keyframes victory-burst {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Parpadeo neón sutil */
+@keyframes neon-flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    text-shadow:
+      0 0 5px var(--accent-cyan),
+      0 0 10px var(--accent-cyan),
+      0 0 20px var(--accent-cyan);
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+    opacity: 0.8;
+  }
+}
+
+/* Flujo de energía en VS */
+@keyframes energy-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Pulso de escala VS */
+@keyframes vs-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Confetti caída */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Rayos de luz */
+@keyframes light-rays {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Animación de título glow */
+@keyframes title-glow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 10px var(--accent-cyan),
+      0 0 20px var(--accent-cyan),
+      0 0 40px var(--accent-magenta);
+  }
+  50% {
+    text-shadow:
+      0 0 20px var(--accent-cyan),
+      0 0 40px var(--accent-cyan),
+      0 0 60px var(--accent-magenta);
+  }
+}
+
+/* Animaciones existentes mejoradas */
 @keyframes winner-pulse {
   0%,
   100% {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow:
-      0 0 0 0 rgba(34, 197, 94, 0.4),
+      0 0 20px var(--winner-glow),
+      0 0 40px rgba(34, 197, 94, 0.4),
       0 25px 50px -12px rgba(34, 197, 94, 0.3);
   }
   50% {
-    transform: scale(1.08);
+    transform: scale(1.05);
     box-shadow:
-      0 0 0 10px rgba(34, 197, 94, 0),
+      0 0 30px var(--winner-glow),
+      0 0 60px rgba(34, 197, 94, 0.6),
       0 25px 50px -12px rgba(34, 197, 94, 0.5);
   }
 }
@@ -52,13 +239,13 @@ body {
   50%,
   70%,
   90% {
-    transform: translateX(-5px) scale(0.95);
+    transform: translateX(-3px) scale(0.95);
   }
   20%,
   40%,
   60%,
   80% {
-    transform: translateX(5px) scale(0.95);
+    transform: translateX(3px) scale(0.95);
   }
 }
 
@@ -95,6 +282,10 @@ body {
   }
 }
 
+/* ================================
+   CLASES DE UTILIDAD - Animaciones
+   ================================ */
+
 .animate-winner {
   animation: winner-pulse 0.6s ease-in-out infinite;
 }
@@ -113,4 +304,117 @@ body {
 
 .animate-slide-in-right {
   animation: slide-in-right 0.4s ease-out;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-victory-burst {
+  animation: victory-burst 0.5s ease-out;
+}
+
+.animate-title-glow {
+  animation: title-glow 3s ease-in-out infinite;
+}
+
+.animate-vs-pulse {
+  animation: vs-pulse 1.5s ease-in-out infinite;
+}
+
+.animate-energy-flow {
+  background-size: 200% 200%;
+  animation: energy-flow 3s ease infinite;
+}
+
+.animate-light-rays {
+  animation: light-rays 20s linear infinite;
+}
+
+/* ================================
+   EFECTOS ESPECIALES
+   ================================ */
+
+/* Glassmorphism */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-hover:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Shine sweep effect */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+.shine-effect:hover::after {
+  animation: shine-sweep 0.75s ease-out;
+}
+
+/* Neon text */
+.neon-text {
+  color: var(--text-primary);
+  text-shadow:
+    0 0 5px var(--accent-cyan),
+    0 0 10px var(--accent-cyan),
+    0 0 20px var(--accent-cyan);
+}
+
+/* Gradient border */
+.gradient-border {
+  position: relative;
+  background: var(--bg-secondary);
+  border-radius: 1rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-card);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* ================================
+   REDUCED MOTION
+   ================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

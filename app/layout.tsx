@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
@@ -17,6 +17,14 @@ export const metadata: Metadata = {
   description: 'A simple app to create and manage matchups for games and tournaments.',
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,7 +32,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Contenedor 9:16 para simular móvil en desktop */}
+        <div className="min-h-screen w-full flex justify-center">
+          <div className="w-full max-w-[430px] min-h-screen relative">{children}</div>
+        </div>
+      </body>
     </html>
   )
 }

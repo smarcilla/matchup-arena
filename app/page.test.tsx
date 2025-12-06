@@ -34,9 +34,10 @@ test('renders the main heading Matchup Arena', async () => {
   const HomeComponent = await Home()
   render(HomeComponent)
 
-  // Assert
-  const heading = screen.getByRole('heading', { name: /matchup arena/i })
-  expect(heading).toHaveTextContent(/matchup arena/i)
+  // Assert - El título está dividido en "MATCHUP" y "ARENA" en el nuevo diseño
+  const heading = screen.getByRole('heading', { level: 1 })
+  expect(heading).toHaveTextContent(/matchup/i)
+  expect(heading).toHaveTextContent(/arena/i)
 })
 
 test('renders competitions from database', async () => {
