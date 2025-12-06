@@ -1,6 +1,8 @@
 import CompetitionCard from '@/components/CompetitionCard'
 import { getCompetitionsForHome } from '@/lib/queries'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   const competitions = await getCompetitionsForHome()
 
