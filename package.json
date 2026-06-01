@@ -40,6 +40,6 @@
     "prisma": "5.22.0",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^4.0.14"
+    "vitest": "^4.1.0"
   }
 }
